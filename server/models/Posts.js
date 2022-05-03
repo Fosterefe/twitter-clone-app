@@ -8,6 +8,10 @@ const postSchema = mongoose.Schema({
     createdAt:  {
         type: Date,
         default: Date.now
+    },
+    owner_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Users'
     }
 })
 

@@ -2,7 +2,9 @@ const {hello,
 createUser,
 createPost,
 getAllUsers,
-getAllPosts
+getAllPosts,
+newFollower,
+newFollow
 } = require('../controllers/resolversFuncs');
 
 const resolvers = {
@@ -13,8 +15,10 @@ const resolvers = {
     },
     Mutation: {
         createUser,
-        createPost
-    }
+        createPost,
+        newFollower,
+        newFollow
+    },
 }
 
 module.exports = { resolvers };
