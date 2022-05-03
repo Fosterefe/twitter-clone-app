@@ -2,11 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const connectDB = require('./configs/db');
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefinitions } = require('./graphQL/typeDefs');
 const { resolvers } = require('./graphQL/resolver');
 
 async function startApp() {
+
+    await connectDB();
 
     app.use(cors());
 

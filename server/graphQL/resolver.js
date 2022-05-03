@@ -1,8 +1,19 @@
-const { typeDefinitions } = require('./typeDefs');
+const {hello,
+createUser,
+createPost,
+getAllUsers,
+getAllPosts
+} = require('../controllers/resolversFuncs');
 
 const resolvers = {
     Query: {
-        hello: () => 'Hello world'
+        hello,
+        getAllUsers,
+        getAllPosts
+    },
+    Mutation: {
+        createUser,
+        createPost
     }
 }
 
