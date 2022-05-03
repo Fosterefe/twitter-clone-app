@@ -86,7 +86,31 @@ async function newFollow(_, args) {
     } catch (err) {
         console.error(err);
     } 
-    
 }
 
-module.exports = {hello, createUser, createPost, getAllUsers, getAllPosts, newFollower, newFollow};
+async function addLike(_, args) {
+    const { add, userId, postId } =  args.payload;
+
+    const post = await Post.findById(postId);
+    const user = await User.findById(userId);
+    if(!post || !user) return 'Post not found';
+
+    try {
+        if(add===true) {
+            post.likes.amount = post.likes.amount + 1;
+            post.likes.users = post.likes.users.concat(user._id);
+            await post.save();
+            return post.populate({path: "likes", populate: "users"});
+        } else {
+            if(post.likes.amount === 0) return post;
+            post.likes.amount = post.likes.amount - 1;
+            await post.save();
+            return post.populate({path: "likes", populate: "users"});
+        }
+    } catch (err) {
+        console.error(err);
+    }
+
+}
+
+module.exports = {hello, createUser, createPost, getAllUsers, getAllPosts, newFollower, newFollow, addLike};

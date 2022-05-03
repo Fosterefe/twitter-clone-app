@@ -4,7 +4,8 @@ createPost,
 getAllUsers,
 getAllPosts,
 newFollower,
-newFollow
+newFollow,
+addLike
 } = require('../controllers/resolversFuncs');
 
 const resolvers = {
@@ -17,7 +18,8 @@ const resolvers = {
         createUser,
         createPost,
         newFollower,
-        newFollow
+        newFollow,
+        addLike
     },
 }
 

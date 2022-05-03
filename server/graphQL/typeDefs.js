@@ -2,11 +2,27 @@ const { gql } = require('apollo-server-express');
 
 
 const typeDefinitions = gql`
+    type peopleLikes  {
+        id: ID
+        username: String
+        gmail: String
+        password: String
+        posts: [Post]
+        followers: [Follower]
+        follows: [Follow]
+    }
+
+    type Likes {
+        amount: Int
+        users: [peopleLikes]
+    }
+ 
     type Post {
         id: ID
         content: String
-        owner_id: String
         createdAt: String
+        owner_id: String
+        likes: Likes
     }
 
     type Follower {
@@ -71,11 +87,18 @@ const typeDefinitions = gql`
         userId: ID
     }
 
+    input LikeInput {
+        add: Boolean
+        userId: ID
+        postId: ID
+    }
+
     type Mutation {
         createUser(user: UserInput!): User
         createPost(post: PostInput!): Post
         newFollower(follower: FollowerInput!): User
         newFollow(follow: NewFollow!): User
+        addLike(payload: LikeInput): Post
     }
 `
 
