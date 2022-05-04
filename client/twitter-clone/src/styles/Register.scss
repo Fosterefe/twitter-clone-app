@@ -1,0 +1,147 @@
+@import './variables.scss';
+
+.Register {
+    width: 100%;
+    height: 100vh;
+    background-color: $tendencies-dark;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .r-card {
+        height: 65%;
+        width: 65%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: $main-dark;
+        color: white;
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+        .r-header {
+            flex: .7;
+            width: 75%;
+            display: block;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            text-align: center;
+            padding-top: 1.5rem;
+
+            svg {
+                margin-bottom: 1.1rem;
+                font-size: 2.2rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+                font-weight: 500;
+            }
+        }
+
+        form {
+            flex: 1.3;
+            width: 75%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .r-inputs {
+                flex: 1;
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+
+                input {
+                    font-family: 'Rubik', sans-serif;
+                    height: 2.6rem;
+                    padding-left: .5rem;
+                    color: white;
+                    background-color: $light-dark;
+                    border: none;
+                    border-radius: 5px;
+                }
+
+                input:focus {
+                    outline: 1.5px solid $lightBlue;
+                }
+            }
+            
+            .r-submit {
+                flex: .5;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                button {
+                    width: 80%;
+                    height: 3rem;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    transition: all .1s ease-in-out;
+                    border: none;
+
+                    &:hover{
+                        background-color: rgba(219, 218, 218, 1);
+                        transform: scale(1.02);
+                    }
+                }
+            }
+
+        }
+
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .Register {
+
+        .r-card {
+            width: 95%;
+            height: 70%;
+
+            .r-header {
+                flex: .4;
+                svg {
+                    font-size: 2rem;
+                }
+
+                h1 {
+                    font-size: 1.8rem;
+                }
+            }
+
+            form {
+                flex: 1.4;
+                .r-inputs {
+                    flex: 1;
+                    width: 100%;
+                    justify-content: space-evenly;
+
+                    input {
+                        width: 100%;
+                    }
+                }
+
+                .r-submit {
+                    width: 100%;
+                    flex: .5;
+
+                    button {
+                        width: 100%;
+                        border: none;
+                        margin-top: -1.5rem;
+                    }
+                }
+            }
+
+        }
+    }
+}
