@@ -1,5 +1,7 @@
 const User = require('../models/User');
 const Post = require('../models/Posts');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 /* Queries  */
 
@@ -13,7 +15,7 @@ async function getAllUsers() {
 }
 
 async function getAllPosts() {
-    const posts = await Post.find();
+    const posts = await Post.find().populate({path: "likes", populate: "users"});
     return posts;
 }
 
@@ -21,10 +23,47 @@ async function getAllPosts() {
 
 async function createUser(_, args) {
     const { username, gmail, password } = args.user;
-    const newUser = new User({ username, gmail, password });
+    if(!username || !gmail || !password) return 'All fields required!';
 
+    const checkForUser = await User.findOne({ username: username })
+    if(checkForUser) throw new Error("User already in DB");
+
+    // Hash Password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // save the new user
+    const newUser = new User({ username, gmail, password: hashedPassword });
     await newUser.save();
-    return newUser;
+    return newUser;  
+}
+
+async function loginUser(_, args) {
+    const { username, gmail, password } = args.user;
+    if(!username || !gmail || !password) throw new Error('All fields required!');
+    const user = await User.findOne({ username: username, gmail: gmail });
+    if(!user) throw new Error('User not found');
+
+    const hashedPass = user.password
+    const validatePassword = await bcrypt.compare(password, hashedPass);
+
+    if(!validatePassword) throw new Error('Username or password is incorrect!');
+
+    const token = jwt.sign({username, gmail, hashedPass}, process.env.TOKEN_KEY, { expiresIn: "50s" });
+
+    return {jwt: token, user: user};
+}
+
+async function verifyToken(_, args) {
+    const token = args.token;
+
+    return jwt.verify(token, process.env.TOKEN_KEY, (err, user) => {
+        if(err) {
+            //throw new Error(err);
+            return { isExpired: true };
+        } 
+        return { isExpired: false, user: user}
+    })
 }
 
 async function createPost(_, args) {
@@ -113,4 +152,4 @@ async function addLike(_, args) {
 
 }
 
-module.exports = {hello, createUser, createPost, getAllUsers, getAllPosts, newFollower, newFollow, addLike};
+module.exports = {hello, createUser, createPost, getAllUsers, getAllPosts, newFollower, newFollow, addLike, loginUser, verifyToken};

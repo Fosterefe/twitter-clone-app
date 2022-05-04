@@ -2,19 +2,9 @@ const { gql } = require('apollo-server-express');
 
 
 const typeDefinitions = gql`
-    type peopleLikes  {
-        id: ID
-        username: String
-        gmail: String
-        password: String
-        posts: [Post]
-        followers: [Follower]
-        follows: [Follow]
-    }
-
     type Likes {
         amount: Int
-        users: [peopleLikes]
+        users: [User]
     }
  
     type Post {
@@ -93,12 +83,38 @@ const typeDefinitions = gql`
         postId: ID
     }
 
+    input LoginInput {
+        username: String
+        gmail: String
+        password: String
+    }
+
+    type Token {
+        jwt: String
+        user: User
+    }
+
+    type TokenUser {
+        username: String
+        gmail: String
+        hashedPass: String
+        iat: Int
+        exp: Int
+    }
+
+    type varifyTokenUser {
+        isExpired: Boolean
+        user: TokenUser
+    }
+
     type Mutation {
         createUser(user: UserInput!): User
         createPost(post: PostInput!): Post
         newFollower(follower: FollowerInput!): User
         newFollow(follow: NewFollow!): User
         addLike(payload: LikeInput): Post
+        loginUser(user: LoginInput!): Token
+        verifyToken(token: String!): varifyTokenUser
     }
 `
 
