@@ -1,0 +1,198 @@
+.Register {
+  width: 100%;
+  height: 100vh;
+  background-color: #16181c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Register .r-card {
+  height: 65%;
+  width: 65%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.Register .r-card .r-header {
+  -webkit-box-flex: .7;
+      -ms-flex: .7;
+          flex: .7;
+  width: 75%;
+  display: block;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  text-align: center;
+  padding-top: 1.5rem;
+}
+
+.Register .r-card .r-header svg {
+  margin-bottom: 1.1rem;
+  font-size: 2.2rem;
+}
+
+.Register .r-card .r-header h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+
+.Register .r-card form {
+  -webkit-box-flex: 1.3;
+      -ms-flex: 1.3;
+          flex: 1.3;
+  width: 75%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Register .r-card form .r-inputs {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.Register .r-card form .r-inputs input {
+  font-family: 'Rubik', sans-serif;
+  height: 2.6rem;
+  padding-left: .5rem;
+  color: white;
+  background-color: #202327;
+  border: none;
+  border-radius: 5px;
+}
+
+.Register .r-card form .r-inputs input:focus {
+  outline: 1.5px solid #1d9bf0;
+}
+
+.Register .r-card form .r-submit {
+  -webkit-box-flex: .5;
+      -ms-flex: .5;
+          flex: .5;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Register .r-card form .r-submit button {
+  width: 80%;
+  height: 3rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  -webkit-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+  border: none;
+}
+
+.Register .r-card form .r-submit button:hover {
+  background-color: #dbdada;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+@media screen and (max-width: 450px) {
+  .Register .r-card {
+    width: 95%;
+    height: 70%;
+  }
+  .Register .r-card .r-header {
+    -webkit-box-flex: .4;
+        -ms-flex: .4;
+            flex: .4;
+  }
+  .Register .r-card .r-header svg {
+    font-size: 2rem;
+  }
+  .Register .r-card .r-header h1 {
+    font-size: 1.8rem;
+  }
+  .Register .r-card form {
+    -webkit-box-flex: 1.4;
+        -ms-flex: 1.4;
+            flex: 1.4;
+  }
+  .Register .r-card form .r-inputs {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    width: 100%;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  .Register .r-card form .r-inputs input {
+    width: 100%;
+  }
+  .Register .r-card form .r-submit {
+    width: 100%;
+    -webkit-box-flex: .5;
+        -ms-flex: .5;
+            flex: .5;
+  }
+  .Register .r-card form .r-submit button {
+    width: 100%;
+    border: none;
+    margin-top: -1.5rem;
+  }
+}
+/*# sourceMappingURL=Register.css.map */

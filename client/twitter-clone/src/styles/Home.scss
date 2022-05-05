@@ -1,0 +1,194 @@
+@import './variables.scss';
+
+.Home {
+    display: flex;
+    overflow: hidden;
+
+    .h-left {
+        width: 50%;
+        height: 100vh;
+
+        svg {
+            height: 100%;
+            width: 100%;
+            background-color: $lightBlue;
+            fill: white;
+            g {
+                stroke-width: 200px;
+                font-size: 1rem;
+            }
+        }
+    }
+    .h-right {
+        width: 50%;
+        height: 100vh;
+        background-color: $main-dark;
+        color: white;
+
+        .h-up {
+            height: 40vh;
+            padding-top: 3rem;
+            padding-bottom: 2rem;
+            padding-left: 2.5rem;
+            margin-bottom: 10px;
+
+            svg {
+                font-size: 2.3rem;
+                color: aliceblue;
+                margin-bottom: 5rem;
+            }
+
+            h1 {
+                font-size: 4rem;
+                letter-spacing: 3px;
+            }
+        }
+
+        .h-down {
+            height: 60vh;
+            padding-left: 2.5rem;
+
+
+            .hd-u {
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+            }
+
+            .hd-btns {
+                .link-r {
+                    background-color:rgba(29, 155, 240, 1);
+                    padding: 11px 100px;
+                    border-radius: 20px;
+                    text-decoration: none;
+                    color: white;
+                    transition: all .2s;
+
+                    &:hover {
+                        background-color: rgba(29, 155, 240, .85)
+                    }
+                }
+
+                h4 {
+                    margin-top: 35px;
+                    font-size: 1.1rem;
+                }
+
+                .link-s {
+                    background-color: $lightBlue;
+                    padding: 11px 100px;
+                    border-radius: 20px;
+                    text-decoration: none;
+                    color: white;
+                    transition: all .2s;
+
+                    
+                    &:hover {
+                        background-color: rgba(29, 155, 240, .85)
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .Home {
+        flex-direction: column-reverse;
+
+        .h-left {
+            width: 100%;  
+            height: 60vh;
+            svg {
+                height: 100%;
+            }  
+        }
+        
+        .h-right {
+            width: 100%;
+            height: 70vh;
+
+            .h-up {
+                height: 30vh;
+                padding-left: 10rem;
+                svg {
+                    margin-bottom: 3rem;
+                }
+
+                h1 {
+                    font-size: 2.5rem;
+                }   
+            }
+
+            .h-down {
+                height: 40vh;
+                padding-left: 10rem;
+                .hd-u {
+                    font-size: 1.5rem;
+                    margin-bottom: 40px;
+                }
+
+                .hd-btns {
+                    h4 {
+                        font-size: 1.2rem;
+                    }
+
+                    .link-r {
+                        padding: 12px 120px;
+                    }
+
+                    .link-s {
+                        padding: 12px 120px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .Home {
+        flex-direction: column-reverse;
+
+        .h-left {
+            width: 100%;  
+            height: 60vh;
+            svg {
+                height: 100%;
+            }  
+        }
+        
+        .h-right {
+            width: 100%;
+            height: 80vh;
+
+            .h-up {
+                padding-left: 2.5rem;
+                margin-bottom: 4.5rem;
+                svg {
+                    margin-bottom: 3rem;
+                }
+
+                h1 {
+                    font-size: 2.5rem;
+                }   
+            }
+
+            .h-down {
+                padding-left: 2.5rem;
+                .hd-u {
+
+                }
+
+                .hd-btns {
+                    .link-r {
+                        padding: 11px 100px;
+                    }
+
+                    .link-s {
+                        padding: 11px 100px;
+                    }
+                }
+            }
+        }
+    }
+}
