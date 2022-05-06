@@ -29,10 +29,6 @@ function Login() {
       setUsername('');
       setGmail('');
       setPassword('');
-
-/*       if(data?.loginUser) {
-        navigate('/dashboard');
-      }; */
     }
 
     return (

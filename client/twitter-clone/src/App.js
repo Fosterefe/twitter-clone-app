@@ -15,7 +15,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/register' element={<Register />  }  /> 
         <Route path='/login' element={<Login />}/>
-        <Route path='/dashboard' element={<RouterLayout children={<Dashboard />} notFound={<Home />}  />}/>
+        <Route path='/home' element={<Dashboard />}/>
       </Routes>
     </BrowserRouter>
   );

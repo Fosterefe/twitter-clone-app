@@ -64,3 +64,16 @@ mutation verifyToken($token: String!){
   }
 }
 `
+
+export const CREATE_POST = gql`
+mutation createPost($content: String, $owner_id: String){
+  createPost(post: {
+    content: $content,
+    owner_id: $owner_id
+  }) {
+    owner_id
+    content
+    createdAt
+  }
+}
+`

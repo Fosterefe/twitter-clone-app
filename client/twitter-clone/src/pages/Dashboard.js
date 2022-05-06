@@ -1,29 +1,50 @@
 import React from 'react'
-import { useEffect } from 'react'
-import { useVerifyToken } from '../customHooks.js/mutationHooks';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react'
+import Post from '../components/Post';
+import NavBar from '../components/NavBar';
+import '../styles/Dashboard.scss'
+import AddPostInput from '../components/AddPostInput';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faMarker} from '@fortawesome/free-solid-svg-icons'
+import { useCreateNewPost } from '../customHooks.js/mutationHooks';
 
 function Dashboard() {
-  const navigate = useNavigate();
-  
-  const user = JSON.parse(localStorage.getItem('current_user'))
-  const [ verifyJWT, {data, error, loading} ] = useVerifyToken();
-  const token = user.jwt
-  if(error) console.log(error.message)
-  if(data) console.log(data)
-  //if(data) navigate('/login');
-/* 
-  useEffect(() => {
-    setTimeout(verifyJWT({ variables: { token } }), 20000)
-  }, []) */
- 
+    const [content, setContent] = useState('');
+    const owner_id = JSON.parse(localStorage.getItem('current_user')).user.id;
+    const posts = JSON.parse(localStorage.getItem('current_user')).user.posts;
+    const postInput = React.createRef(null);
+    const postsDiv = React.createRef(null);
 
-  return (
-    <div>
-      <h1>Welcome { user.user.username }</h1>
-      { error && <p>{error.message}</p> }
-    </div>
-  )
+    const [ createPost, { data, error, loading } ] = useCreateNewPost();
+    if(error) console.log(error.message);
+
+    const openPostInput = () => {
+      postInput.current.classList.toggle('active');
+      postsDiv.current.classList.toggle('quit');
+    }
+
+    const handleTweet = (e) => {
+      e.preventDefault();
+
+      createPost({ variables: { content, owner_id } })
+
+      setContent('');
+    }
+
+    return (
+        <div className='d-container'>
+            <NavBar/>
+            <div className='Dashboard'>
+                <div onClick={openPostInput} className='mobile-add'>
+                    <FontAwesomeIcon icon={faMarker}/>
+                </div>
+                <AddPostInput ref={postInput} submitForm={handleTweet} value={content} changeValue={setContent}/>
+                <div ref={postsDiv} className='home-posts'>
+                  <Post/>
+                </div>
+            </div>
+        </div>
+    )
 }
 
-export default Dashboard
+export default Dashboard;
