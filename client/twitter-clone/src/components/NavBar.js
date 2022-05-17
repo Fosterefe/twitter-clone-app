@@ -6,6 +6,7 @@ import '../styles/NavBar.scss';
 
 function NavBar() {
 
+    const userId = JSON.parse(localStorage.getItem('current_user')).user.id;
 
     return (
         <div className='Navbar'>
@@ -17,12 +18,12 @@ function NavBar() {
                         </Link>
                     </li>
                     <li>
-                        <Link to='/home'>
+                        <Link to={`/user/${userId}`}>
                             <FontAwesomeIcon icon={faUser}/>
                         </Link>
                     </li>
                     <li>
-                        <Link to='/home'>
+                        <Link to='/logout'>
                             <FontAwesomeIcon icon={faArrowRightFromBracket}/>
                         </Link>
                     </li>

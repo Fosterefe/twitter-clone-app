@@ -77,3 +77,63 @@ mutation createPost($content: String, $owner_id: String){
   }
 }
 `
+
+export const ADD_LIKE = gql`
+mutation giveLike($add: Boolean, $userId: ID, $postId: ID) {
+  addLike(payload: {
+    add: $add,
+    userId: $userId,
+    postId: $postId
+  }) {
+    content
+    likes {
+      amount
+    }
+  }
+}
+`
+
+export const GET_USER_PROFILE = gql`
+mutation getUserById($getUserByIdId: String!) {
+  getUserById(id: $getUserByIdId) {
+    id
+    username
+    gmail
+    posts {
+      id
+      content
+      createdAt
+      likes {
+        amount
+      }
+      owner_name
+    }
+    followers {
+      id
+      username
+    }
+    follows {
+      id
+      username
+    }
+  }
+}
+`
+
+export const NEW_FOLLOW = gql`
+mutation($myId: ID, $userId: ID) {
+  newFollow(follow: {
+    myId: $myId,
+    userId: $userId
+  }) {
+    username
+    id
+    follows {
+        username
+      }
+      followers {
+        username
+    }
+  }
+}
+`

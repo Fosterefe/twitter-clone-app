@@ -23,15 +23,18 @@
                 background-color: $lightBlue;
             }
         }
-
+        
         .post-main {
             width: 90%;
             display: flex;
             flex-direction: column;
             justify-content: center;
 
-            h4 {
-                font-size: .9rem;
+            a {
+                text-decoration: none;
+                h4 {
+                    font-size: .9rem;
+                }
             }
 
             h2 {
@@ -43,7 +46,7 @@
                 display: flex;
                 align-items: center;
 
-                button {
+                .like-btn {
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -62,11 +65,54 @@
                     }
                 }
 
+                .like-btn.liked {
+
+                    svg {
+                        color: red;
+                    }
+                }
+
                 .amount {
                     p {
                         margin: auto 0;
                     }
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .Post-list {
+
+        .post {
+            padding: 1rem 1.5rem;
+
+            .avatar {
+                width: 20%;
+            }
+
+            .post-main {
+                width: 80%;
+                padding-left: 1rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .Post-list {
+        
+        .post {
+            padding: 1rem 1rem;
+
+            .avatar {
+                width: 15%;
+            }
+
+            .post-main {
+                width: 80%;
+
             }
         }
     }

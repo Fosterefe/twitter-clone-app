@@ -3,6 +3,7 @@
 .d-container {
     max-height: 100vh;
     background-color: $main-dark;
+    display: flex;
 
     .Dashboard {
         width: 50%;
@@ -32,6 +33,16 @@
     }
 }
 
+@media screen and (max-width: 800px) {
+    .d-container {
+        flex-direction: column;
+
+        .Dashboard {
+            margin-left: 5rem;
+        }
+    }
+}
+
 @media screen and (max-width: 500px) {
     .d-container{
 
@@ -43,6 +54,7 @@
             margin: 0;
             border-bottom: 1px solid white;
             position: relative;
+            margin-bottom: 3rem;
 
             .mobile-add {
                 padding: 1rem 1rem;

@@ -6,7 +6,18 @@ import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/c
 
 const client = new ApolloClient({
   connectToDevTools: true,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          YOUR_FIELD: {
+            // shorthand  
+            merge: true,
+          },
+        },
+      },
+    },
+  }),
   link: new HttpLink({
     uri: "http://localhost:3500/graphql"
   })

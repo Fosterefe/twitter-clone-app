@@ -3,11 +3,12 @@ import '../styles/Home.scss'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 function Home() {
 
     const current_user = localStorage.getItem('current_user'); 
-    if(current_user) console.log(current_user)
+    if(current_user) return <Navigate to='/home' />
 
     return (
         <div className='Home'>

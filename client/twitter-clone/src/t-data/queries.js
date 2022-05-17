@@ -16,6 +16,7 @@ query {
     content
     createdAt
     owner_id
+    owner_name
     likes {
       amount
       users {

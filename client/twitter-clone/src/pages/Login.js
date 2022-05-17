@@ -5,30 +5,19 @@ import CustomInput from '../components/input';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { useLoginUser } from '../customHooks.js/mutationHooks';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Login() {
-    const [username, setUsername] = useState('');
-    const [gmail, setGmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const navigate = useNavigate();
-
     const [ loginUser, { data, loading, error } ] = useLoginUser();
-
     if(data?.loginUser) {
-      console.log(data)
       localStorage.setItem('current_user', JSON.stringify(data.loginUser))
+      return <Navigate to='/home' />
     };
-
-    const handleSubmit = (e) => {
+ 
+    const handleSubmit = (e, username, gmail, password) => {
       e.preventDefault();
-
       loginUser({ variables: { username, gmail, password } });
-
-      setUsername('');
-      setGmail('');
-      setPassword('');
     }
 
     return (
@@ -60,12 +49,12 @@ function Login() {
                 </div>
                 <CustomInput
                     registerHandle={handleSubmit}
-                    setUsername={setUsername}
+                    /* setUsername={setUsername}
                     setPassword={setPassword}
                     setGmail={setGmail}
                     username={username}
                     gmail={gmail}
-                    password={password}
+                    password={password} */
                     submitText={'Sign In'}
                     load={loading}
                     />

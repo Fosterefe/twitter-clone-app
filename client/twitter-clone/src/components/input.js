@@ -1,9 +1,13 @@
 import React from 'react'
+import { useState } from 'react';
 
-function CustomInput({ registerHandle, setUsername, setPassword, setGmail, username, gmail, password, submitText, load }) {
+function CustomInput({ registerHandle, submitText, load }) {
+    const [username, setUsername] = useState('');
+    const [gmail, setGmail] = useState('');
+    const [password, setPassword] = useState('');
 
     return (
-        <form onSubmit={(e) => registerHandle(e)}>
+        <form onSubmit={(e) => registerHandle(e, username, gmail, password)}>
             <div className='r-inputs'>
                 <input
                     type='text'
