@@ -12,6 +12,7 @@ const typeDefinitions = gql`
         content: String
         createdAt: String
         owner_id: String
+        owner_name: String
         likes: Likes
     }
 
@@ -47,12 +48,6 @@ const typeDefinitions = gql`
 
     type  helloShcema{
         number: Int
-    }
-
-    type Query {
-        hello: [helloShcema]
-        getAllUsers: [User]
-        getAllPosts: [Post]
     }
 
     input UserInput {
@@ -107,6 +102,12 @@ const typeDefinitions = gql`
         user: TokenUser
     }
 
+    type Query {
+        hello: [helloShcema]
+        getAllUsers: [User]
+        getAllPosts: [Post]
+    }
+
     type Mutation {
         createUser(user: UserInput!): User
         createPost(post: PostInput!): Post
@@ -115,6 +116,7 @@ const typeDefinitions = gql`
         addLike(payload: LikeInput): Post
         loginUser(user: LoginInput!): Token
         verifyToken(token: String!): varifyTokenUser
+        getUserById(id: String!): User
     }
 `
 

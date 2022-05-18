@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faHouse, faUser, faArrowRightFromBracket} from '@fortawesome/free-solid-svg-icons';
+import {faHouse, faUser, faArrowRightFromBracket, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 import '../styles/NavBar.scss';
 
 function NavBar() {
@@ -15,6 +15,11 @@ function NavBar() {
                     <li>
                         <Link to='/home'>
                             <FontAwesomeIcon icon={faHouse}/>
+                        </Link>
+                    </li>
+                    <li className='search'>
+                        <Link to={`/all-users`}>
+                            <FontAwesomeIcon icon={faMagnifyingGlass}/>
                         </Link>
                     </li>
                     <li>

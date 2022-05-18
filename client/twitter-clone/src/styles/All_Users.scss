@@ -10,6 +10,8 @@
 
     .au-card {
         width: 80%;
+        max-height: 70%;
+        overflow: scroll;
         display: flex;
         flex-direction: column;
         background-color: $tendencies-dark;
@@ -56,9 +58,14 @@
     }
 }
 
+@media screen and (max-width: 800px) {
+    .all-users {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 500px) {
     .all-users {
-        height: auto;
-       
+        display: none;
     }
 }

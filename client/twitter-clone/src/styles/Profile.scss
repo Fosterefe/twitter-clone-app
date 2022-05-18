@@ -38,6 +38,7 @@
                 color: white;
                 background-color: $lightBlue;
                 margin-bottom: .6rem;
+                border: none;
 
                 &:hover{
                     opacity: .9;
@@ -64,6 +65,16 @@
             border-bottom: .5px solid white;
         }
 
+    }
+}
+
+@media screen and (min-height: 850px) {
+    .P-Profile {
+        .P-main {
+            .header {
+                height: 30vh;
+            }
+        }
     }
 }
 

@@ -14,6 +14,10 @@ const postSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Users'
     },
+    owner_name: {
+        type: String,
+        required: true
+    },
     likes: {
         amount: {
             type: Number,

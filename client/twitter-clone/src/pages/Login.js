@@ -17,6 +17,10 @@ function Login() {
  
     const handleSubmit = (e, username, gmail, password) => {
       e.preventDefault();
+
+      if(username.trim() === '' || gmail.trim() === '' || password.trim() === '') return <p>Fill all the credentials</p>
+      if(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(gmail) === false) return
+
       loginUser({ variables: { username, gmail, password } });
     }
 

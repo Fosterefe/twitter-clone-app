@@ -10,7 +10,7 @@ const { resolvers } = require('./graphQL/resolver');
 async function startApp() {
 
     await connectDB();
-
+    app.use(express.json());
     app.use(cors());
 
     app.get('/', (req, res) => {

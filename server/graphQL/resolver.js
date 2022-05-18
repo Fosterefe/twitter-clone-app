@@ -7,7 +7,8 @@ newFollower,
 newFollow,
 addLike,
 loginUser,
-verifyToken
+verifyToken,
+getUserById
 } = require('../controllers/resolversFuncs');
 
 const resolvers = {
@@ -23,7 +24,8 @@ const resolvers = {
         newFollow,
         addLike,
         loginUser,
-        verifyToken
+        verifyToken,
+        getUserById
     },
 }
 

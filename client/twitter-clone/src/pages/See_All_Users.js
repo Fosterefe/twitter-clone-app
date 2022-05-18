@@ -1,20 +1,22 @@
 import React from 'react';
-import '../styles/All_Users.scss';
-import { useGetUsers } from '../customHooks.js/queriesHooks';
+import NavBar from '../components/NavBar';
+import {useGetUsers} from '../customHooks.js/queriesHooks';
+import { Link } from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom'; 
+import '../styles/See_All_Users.scss';
 
-function All_Users() {
-
-    const { data, error, loading} = useGetUsers();
-    if(error) console.log(error)
+function See_All_Users() {
+    const {data, error, loading} = useGetUsers();
+    if (error) 
+        console.log(error)
 
     return (
-        <div className='all-users'>
-            <div className='au-card'>
+        <div className='see-AllUsers'>
+            <NavBar/>
+            <div className='rest'>
                 <h3>Who to follow</h3>
-                <div className='u-container'>
+            <div className='u-container'>
                     { 
                         data && data.getAllUsers.map(user => (
                             <Link to={`/user/${user.id}`} className='user' key={user.id}>
@@ -29,4 +31,4 @@ function All_Users() {
     )
 }
 
-export default All_Users
+export default See_All_Users

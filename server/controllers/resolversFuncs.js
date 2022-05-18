@@ -16,7 +16,7 @@ async function getAllUsers() {
 
 async function getAllPosts() {
     const posts = await Post.find().populate({path: "likes", populate: "users"});
-    return posts;
+    return posts.reverse();
 }
 
 /* Mutations  */
@@ -41,7 +41,7 @@ async function createUser(_, args) {
 async function loginUser(_, args) {
     const { username, gmail, password } = args.user;
     if(!username || !gmail || !password) throw new Error('All fields required!');
-    const user = await User.findOne({ username: username, gmail: gmail });
+    const user = await User.findOne({ username: username, gmail: gmail }).populate('posts').populate('followers').populate('follows');
     if(!user) throw new Error('User not found');
 
     const hashedPass = user.password
@@ -49,7 +49,7 @@ async function loginUser(_, args) {
 
     if(!validatePassword) throw new Error('Username or password is incorrect!');
 
-    const token = jwt.sign({username, gmail, hashedPass}, process.env.TOKEN_KEY, { expiresIn: "50s" });
+    const token = jwt.sign({username, gmail, hashedPass}, process.env.TOKEN_KEY, { expiresIn: "60s" });
 
     return {jwt: token, user: user};
 }
@@ -71,7 +71,7 @@ async function createPost(_, args) {
     const user = await User.findById(owner_id);
     if(!user) return 'No user found';
 
-    const newPost = new Post({ content, owner_id: user._id });
+    const newPost = new Post({ content, owner_id: user._id, owner_name: user.username });
     await newPost.save();
 
     try {
@@ -111,7 +111,7 @@ async function newFollow(_, args) {
 
     const myUser = await User.findById(myId);
     const personToFollow = await User.findById(userId);
-    console.log(personToFollow)
+    //console.log(personToFollow)
     if(!myUser || !personToFollow) return 'There was an error';
 
     try {
@@ -152,4 +152,10 @@ async function addLike(_, args) {
 
 }
 
-module.exports = {hello, createUser, createPost, getAllUsers, getAllPosts, newFollower, newFollow, addLike, loginUser, verifyToken};
+async function getUserById(_, args) {
+    const user = await User.findById(args.id).populate('posts').populate('followers').populate('follows');
+
+    return user;
+}
+
+module.exports = {hello, createUser, createPost, getAllUsers, getAllPosts, newFollower, newFollow, addLike, loginUser, verifyToken, getUserById};

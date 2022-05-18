@@ -17,6 +17,10 @@
             padding: 0;
             margin: 0;
 
+            .search {
+                display: none;
+            }
+
             li {
                 list-style: none;
                 height: 5rem;
@@ -43,6 +47,14 @@
 @media screen and (max-width: 800px) {
     .Navbar {
         width: 5rem;
+
+        nav {
+            ul {
+                .search {
+                    display: flex;
+                }
+            }
+        }
     }
 }
 
@@ -55,9 +67,18 @@
         nav {
 
             ul {
+                justify-content: space-evenly;
                 flex-direction: row;
-                justify-content: center;
+                /* justify-content: center; */
+
+                .search {
+                    display: flex;
+                }
+
                 li {
+                    width: 1rem;
+                    align-items: center;
+                    justify-content: center;
                     margin: 0px 2rem;
                 }
             }
