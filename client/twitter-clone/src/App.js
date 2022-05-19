@@ -8,6 +8,7 @@ import RouterLayout from './components/RouterLayout';
 import Profile from './pages/Profile';
 import Logout from './pages/Logout';
 import See_All_Users from './pages/See_All_Users';
+import { Navigate } from 'react-router-dom';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path='/user/:user' element={<RouterLayout children={<Profile />} />} />
         <Route path='/logout' element={<Logout />}/>
         <Route path='/all-users' element={<RouterLayout children={<See_All_Users />}/>} />
+        <Route exact path='*' element={<Navigate to={'/home'}/>}/>
       </Routes>
     </BrowserRouter>
   );

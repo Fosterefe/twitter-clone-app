@@ -19,7 +19,7 @@ const client = new ApolloClient({
     },
   }),
   link: new HttpLink({
-    uri: "http://localhost:3500/graphql"
+    uri: "https://twitter-clone-248v0.herokuapp.com/graphql"
   })
 });
 
