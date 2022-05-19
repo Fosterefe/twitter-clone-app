@@ -1,6 +1,6 @@
 const User = require('../models/User');
 const Post = require('../models/Posts');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 /* Queries  */

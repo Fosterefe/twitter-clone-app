@@ -6,6 +6,9 @@ const connectDB = require('./configs/db');
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefinitions } = require('./graphQL/typeDefs');
 const { resolvers } = require('./graphQL/resolver');
+/* const bcrypt = require('bcrypt');
+const saltRounds = 10;
+module.exports.bcrypt = bcrypt; */
 
 async function startApp() {
 
